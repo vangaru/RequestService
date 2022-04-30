@@ -6,5 +6,4 @@ namespace RequestService.Api.Controllers;
 [Route("[controller]")]
 public class RequestsController : ControllerBase
 {
-    
 }

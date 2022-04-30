@@ -1,0 +1,122 @@
+﻿[
+  {
+    "StartHour": 0,
+    "MinRequestsCount": 0,
+    "MaxRequestsCount": 5
+  },
+  {
+    "StartHour": 1,
+    "MinRequestsCount": 0,
+    "MaxRequestsCount": 5
+  },
+  {
+    "StartHour": 2,
+    "MinRequestsCount": 0,
+    "MaxRequestsCount": 5
+  },
+  {
+    "StartHour": 3,
+    "MinRequestsCount": 0,
+    "MaxRequestsCount": 5
+  },
+  {
+    "StartHour": 4,
+    "MinRequestsCount": 0,
+    "MaxRequestsCount": 5
+  },
+  {
+    "StartHour": 5,
+    "MinRequestsCount": 0,
+    "MaxRequestsCount": 20
+  },
+  {
+    "StartHour": 6,
+    "MinRequestsCount": 3,
+    "MaxRequestsCount": 30
+  },
+  {
+    "StartHour": 7,
+    "MinRequestsCount": 5,
+    "MaxRequestsCount": 50
+  },
+  {
+    "StartHour": 8,
+    "MinRequestsCount": 5,
+    "MaxRequestsCount": 50
+  },
+  {
+    "StartHour": 9,
+    "MinRequestsCount": 5,
+    "MaxRequestsCount": 50
+  },
+  {
+    "StartHour": 10,
+    "MinRequestsCount": 5,
+    "MaxRequestsCount": 40
+  },
+  {
+    "StartHour": 11,
+    "MinRequestsCount": 5,
+    "MaxRequestsCount": 30
+  },
+  {
+    "StartHour": 12,
+    "MinRequestsCount": 5,
+    "MaxRequestsCount": 25
+  },
+  {
+    "StartHour": 13,
+    "MinRequestsCount": 0,
+    "MaxRequestsCount": 20
+  },
+  {
+    "StartHour": 14,
+    "MinRequestsCount": 5,
+    "MaxRequestsCount": 30
+  },
+  {
+    "StartHour": 15,
+    "MinRequestsCount": 0,
+    "MaxRequestsCount": 20
+  },
+  {
+    "StartHour": 16,
+    "MinRequestsCount": 3,
+    "MaxRequestsCount": 30
+  },
+  {
+    "StartHour": 17,
+    "MinRequestsCount": 5,
+    "MaxRequestsCount": 50
+  },
+  {
+    "StartHour": 18,
+    "MinRequestsCount": 5,
+    "MaxRequestsCount": 50
+  },
+  {
+    "StartHour": 19,
+    "MinRequestsCount": 5,
+    "MaxRequestsCount": 50
+  },
+  {
+    "StartHour": 20,
+    "MinRequestsCount": 5,
+    "MaxRequestsCount": 20
+  },
+  {
+    "StartHour": 21,
+    "MinRequestsCount": 3,
+    "MaxRequestsCount": 15
+  },
+  {
+    "StartHour": 22,
+    "MinRequestsCount": 0,
+    "MaxRequestsCount": 20
+  },
+  {
+    "StartHour": 23,
+    "MinRequestsCount": 0,
+    "MaxRequestsCount": 10
+  }
+]
