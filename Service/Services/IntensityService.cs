@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-using RequestService.Api.Configuration;
-using RequestService.Api.Services;
+﻿using RequestService.Api.Services;
 using RequestService.Common;
 
 namespace RequestService.Services;
@@ -13,17 +11,14 @@ public class IntensityService : IIntensityService
     private const int MillisInHour = 3_600_000;
     private const int DefaultInterval = 10_000;
 
-    private readonly IOptions<RequestsConfiguration> _requestsConfiguration;
     private readonly IIntervalService _intervalService;
 
     /// <summary>
     /// Creates new instance of <see cref="IntensityService"/>.
     /// </summary>
-    /// <param name="requestsConfiguration">Configuration of <see cref="RequestsConfiguration"/>.</param>
     /// <param name="intervalService"><see cref="IIntervalService"/>.</param>
-    public IntensityService(IOptions<RequestsConfiguration> requestsConfiguration, IIntervalService intervalService)
+    public IntensityService(IIntervalService intervalService)
     {
-        _requestsConfiguration = requestsConfiguration;
         _intervalService = intervalService;
     }
 
