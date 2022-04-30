@@ -1,5 +1,4 @@
 ﻿using System.Text.Json;
-using Microsoft.Extensions.Options;
 using RequestService.Api.Configuration;
 using RequestService.Api.Services;
 using RequestService.Common;
@@ -11,14 +10,14 @@ namespace RequestService.Services;
 /// </summary>
 public class IntervalService : IIntervalService
 {
-    private readonly IOptions<RequestsConfiguration> _requestsConfiguration;
+    private readonly RequestsConfiguration _requestsConfiguration;
     private readonly List<OneHourInterval> _intervals;
 
     /// <summary>
     /// Creates new instance of <see cref="IntervalService"/>.
     /// </summary>
     /// <param name="requestsConfiguration">Represents configuration of <see cref="RequestsConfiguration"/>.</param>
-    public IntervalService(IOptions<RequestsConfiguration> requestsConfiguration)
+    public IntervalService(RequestsConfiguration requestsConfiguration)
     {
         _requestsConfiguration = requestsConfiguration;
         _intervals = ReadIntervalsFromConfig();
@@ -29,7 +28,7 @@ public class IntervalService : IIntervalService
 
     private List<OneHourInterval> ReadIntervalsFromConfig()
     {
-        string? intervalsFilePath = _requestsConfiguration.Value.IntervalsFilePath;
+        string? intervalsFilePath = _requestsConfiguration.IntervalsFilePath;
 
         if (intervalsFilePath == null)
         {

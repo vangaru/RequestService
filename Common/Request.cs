@@ -24,4 +24,9 @@ public class Request
     /// <see cref="Route" /> for that request.
     /// </summary>
     public Route? Route { get; set; }
+
+    /// <summary>
+    /// Request datetime.
+    /// </summary>
+    public DateTime RequestDateTime { get; set; } = DateTime.Now;
 }

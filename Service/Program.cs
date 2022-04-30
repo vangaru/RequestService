@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using RequestService;
+using RequestService.Api.Configuration;
 using RequestService.Api.Services;
 using RequestService.Data;
 using RequestService.Services;
-using Service;
 
 const string defaultConnectionProp = "DefaultConnection";
 
@@ -12,7 +13,12 @@ IHost host = Host.CreateDefaultBuilder(args)
         var optionsBuilder = new DbContextOptionsBuilder<RequestsContext>();
         optionsBuilder.UseNpgsql(hostContext.Configuration.GetConnectionString(defaultConnectionProp));
         services.AddScoped(_ => new RequestsContext(optionsBuilder.Options));
-        services.AddOptions();
+
+        IConfigurationSection requestsConfigurationSection = hostContext.Configuration.GetSection(nameof(RequestsConfiguration));
+        var requestsConfiguration = requestsConfigurationSection.Get<RequestsConfiguration>();
+        
+        services.AddSingleton(requestsConfiguration);
+        
         services.AddTransient<IIntensityService, IntensityService>();
         services.AddTransient<IIntervalService, IntervalService>();
         services.AddHostedService<Worker>();
