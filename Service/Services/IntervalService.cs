@@ -25,8 +25,7 @@ public class IntervalService : IIntervalService
     }
 
     /// <inheritdoc cref="IIntervalService.CurrentInterval"/>
-    public OneHourInterval? CurrentInterval =>
-        _intervals.FirstOrDefault(interval => interval.StartHour == DateTime.Now.Hour);
+    public OneHourInterval CurrentInterval => _intervals.First(interval => interval.StartHour == DateTime.Now.Hour);
 
     private List<OneHourInterval> ReadIntervalsFromConfig()
     {

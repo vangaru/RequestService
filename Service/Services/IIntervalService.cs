@@ -13,5 +13,5 @@ public interface IIntervalService
     /// <returns>
     /// <see cref="OneHourInterval"/> instance.
     /// </returns>
-    public OneHourInterval? CurrentInterval { get; }
+    public OneHourInterval CurrentInterval { get; }
 }
