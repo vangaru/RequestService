@@ -1,9 +1,10 @@
 ﻿using System.Text.Json;
 using Microsoft.Extensions.Options;
 using RequestService.Api.Configuration;
+using RequestService.Api.Services;
 using RequestService.Common;
 
-namespace RequestService.Api.Services;
+namespace RequestService.Services;
 
 /// <summary>
 /// Implementation of <see cref="IIntervalService"/>.

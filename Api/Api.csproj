@@ -16,4 +16,8 @@
       <ProjectReference Include="..\Common\Common.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Configuration\Intervals.json" />
+    </ItemGroup>
+
 </Project>
