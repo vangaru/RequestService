@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{CA5C0C50-DAF8-4CF6-BAB4-86693CB09202}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelWriter", "ExcelWriter\ExcelWriter.csproj", "{B99B6F54-7BAB-4DC0-B56C-9B54C0BDE4BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{795159B3-FBE2-49C3-9A33-A18041266902}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connector", "Connector\Connector.csproj", "{15B793A3-0AAF-4893-BA10-956BC591616B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA5C0C50-DAF8-4CF6-BAB4-86693CB09202}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA5C0C50-DAF8-4CF6-BAB4-86693CB09202}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA5C0C50-DAF8-4CF6-BAB4-86693CB09202}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA5C0C50-DAF8-4CF6-BAB4-86693CB09202}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B99B6F54-7BAB-4DC0-B56C-9B54C0BDE4BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B99B6F54-7BAB-4DC0-B56C-9B54C0BDE4BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B99B6F54-7BAB-4DC0-B56C-9B54C0BDE4BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B99B6F54-7BAB-4DC0-B56C-9B54C0BDE4BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{795159B3-FBE2-49C3-9A33-A18041266902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{795159B3-FBE2-49C3-9A33-A18041266902}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{795159B3-FBE2-49C3-9A33-A18041266902}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{795159B3-FBE2-49C3-9A33-A18041266902}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15B793A3-0AAF-4893-BA10-956BC591616B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15B793A3-0AAF-4893-BA10-956BC591616B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15B793A3-0AAF-4893-BA10-956BC591616B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15B793A3-0AAF-4893-BA10-956BC591616B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
