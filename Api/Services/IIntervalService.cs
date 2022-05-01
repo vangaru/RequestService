@@ -14,4 +14,9 @@ public interface IIntervalService
     /// <see cref="OneHourInterval"/> instance.
     /// </returns>
     public OneHourInterval CurrentInterval { get; }
+    
+    /// <summary>
+    /// Reads all intervals from config.
+    /// </summary>
+    public List<OneHourInterval> Intervals { get; }
 }

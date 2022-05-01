@@ -31,7 +31,7 @@ public interface IRequestService
     /// Generates daily requests.
     /// </summary>
     /// <returns>Generated <see cref="Request"/> items.</returns>
-    public IEnumerable<Request> GenerateRequests();
+    public IEnumerable<Request> GenerateRequests(int routesCount);
 
     /// <summary>
     /// Reads requests from database and creates summary.

@@ -47,4 +47,12 @@ public class RequestsController : ControllerBase
         IEnumerable<RequestsPerHourSummary> summary = _requestService.GetRequestsSummary();
         return Ok(summary);
     }
+
+    [HttpPost]
+    [Route("generated/requests")]
+    public IActionResult GetGeneratedRequests([FromBody] int routesCount)
+    {
+        IEnumerable<Request> requests = _requestService.GenerateRequests(routesCount);
+        return Ok(requests);
+    }
 }

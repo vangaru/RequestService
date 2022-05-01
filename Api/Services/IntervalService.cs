@@ -20,29 +20,33 @@ public class IntervalService : IIntervalService
     public IntervalService(IConfiguration configuration)
     {
         _configuration = configuration;
-        _intervals = ReadIntervalsFromConfig();
+        _intervals = Intervals;
     }
 
     /// <inheritdoc cref="IIntervalService.CurrentInterval"/>
     public OneHourInterval CurrentInterval => _intervals.First(interval => interval.StartHour == DateTime.Now.Hour);
 
-    private List<OneHourInterval> ReadIntervalsFromConfig()
+    public List<OneHourInterval> Intervals
     {
-        string intervalsFilePath = _configuration[IntervalsFileKey];
-
-        if (intervalsFilePath == null)
+        get
         {
-            throw new ApplicationException("Intervals file path cannot be null.");
-        }
+            string intervalsFilePath = _configuration[IntervalsFileKey];
 
-        string intervalsContent = File.ReadAllText(intervalsFilePath);
-        var intervals = JsonSerializer.Deserialize<List<OneHourInterval>>(intervalsContent);
+            if (intervalsFilePath == null)
+            {
+                throw new ApplicationException("Intervals file path cannot be null.");
+            }
+
+            string intervalsContent = File.ReadAllText(intervalsFilePath);
+            var intervals = JsonSerializer.Deserialize<List<OneHourInterval>>(intervalsContent);
         
-        if (intervals == null)
-        {
-            throw new ApplicationException($"Failed to deserialize contents of {intervalsFilePath}");
+            if (intervals == null)
+            {
+                throw new ApplicationException($"Failed to deserialize contents of {intervalsFilePath}");
+            }
+        
+            return intervals;
         }
-        
-        return intervals;
     }
+    
 }
