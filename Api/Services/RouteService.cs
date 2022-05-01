@@ -10,18 +10,14 @@ public class RouteService : IRouteService
     private readonly Random _random = new();
 
     /// <inheritdoc cref="IRouteService.GenerateRandomRoute"/>
-    public Route GenerateRandomRoute(int origin, int routesCount)
+    public Route GenerateRandomRoute(int routesCount)
     {
         if (routesCount <= 1)
         {
             throw new ArgumentOutOfRangeException(nameof(routesCount), "Cannot be less than 2");
         }
 
-        if (origin < 1 || origin > routesCount)
-        {
-            throw new ArgumentOutOfRangeException(nameof(origin), "Must be inside 1 and routesCount bounds");
-        }
-
+        int origin = GetOrigin(routesCount);
         int destination = GetDestination(origin, routesCount);
 
         string routeId = Guid.NewGuid().ToString();
@@ -33,6 +29,11 @@ public class RouteService : IRouteService
         };
 
         return route;
+    }
+
+    private int GetOrigin(int routesCount)
+    {
+        return _random.Next(1, routesCount);
     }
 
     private int GetDestination(int origin, int routesCount)

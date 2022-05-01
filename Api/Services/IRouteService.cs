@@ -10,8 +10,7 @@ public interface IRouteService
     /// <summary>
     /// Generates random <see cref="Route"/> instance.
     /// </summary>
-    /// <param name="origin">Origin of the route.</param>
     /// <param name="routesCount">Count of accessible routes.</param>
     /// <returns>Generates <see cref="Route"/> instance.</returns>
-    public Route GenerateRandomRoute(int origin, int routesCount);
+    public Route GenerateRandomRoute(int routesCount);
 }

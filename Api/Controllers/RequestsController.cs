@@ -23,11 +23,9 @@ public class RequestsController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetRequest([FromBody] JsonObject routeData)
+    public IActionResult GetRequest([FromBody] int routesCount)
     {
-        int origin = routeData[OriginParameter]!.GetValue<int>();
-        int routesCount = routeData[RoutesCountParameter]!.GetValue<int>();
-        Route route = _routeService.GenerateRandomRoute(origin, routesCount);
+        Route route = _routeService.GenerateRandomRoute(routesCount);
         Request request = _requestService.GenerateRequest(route);
         return Ok(request);
     }
