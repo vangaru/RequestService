@@ -1,1 +1,3 @@
-﻿Console.WriteLine("");
+﻿using RequestService.ExcelWriter;
+
+ExcelWriterConsole.Write(args);
