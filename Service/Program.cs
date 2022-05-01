@@ -24,7 +24,7 @@ IHostBuilder CreateHostBuilder(string[] args)
 
             services.AddTransient<IIntensityService, IntensityService>();
             services.AddTransient<IIntervalService, IntervalService>();
-            services.AddTransient<IPostgresRepository, PostgresRepository>();
+            services.AddTransient<IDatabaseRepository, DatabaseRepository>();
             services.AddTransient<IRequestsHttpClient, RequestsHttpClient>();
             services.AddHostedService<Worker>();
             

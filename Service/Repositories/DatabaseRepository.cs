@@ -5,50 +5,50 @@ using RequestService.Data;
 namespace RequestService.Repositories;
 
 /// <summary>
-/// Implements <see cref="IPostgresRepository"/>. Should be disposed after usage.
+/// Implements <see cref="IDatabaseRepository"/>. Should be disposed after usage.
 /// </summary>
-public class PostgresRepository : IPostgresRepository
+public class DatabaseRepository : IDatabaseRepository
 {
     private readonly RequestsContext _context;
 
     /// <summary>
-    /// Creates new instance of <see cref="PostgresRepository"/>.
+    /// Creates new instance of <see cref="DatabaseRepository"/>.
     /// </summary>
     /// <param name="context"><see cref="RequestsContext"/> instance to access database.</param>
-    public PostgresRepository(RequestsContext context)
+    public DatabaseRepository(RequestsContext context)
     {
         _context = context;
     }
 
-    /// <inheritdoc cref="IPostgresRepository.Add"/>
+    /// <inheritdoc cref="IDatabaseRepository.Add"/>
     public void Add(Request request)
     {
         _context.Requests!.Add(request);
         _context.SaveChanges();
     }
 
-    /// <inheritdoc cref="IPostgresRepository.AddAsync"/>
+    /// <inheritdoc cref="IDatabaseRepository.AddAsync"/>
     public async Task AddAsync(Request request)
     {
         await _context.Requests!.AddAsync(request);
         await _context.SaveChangesAsync();
     }
 
-    /// <inheritdoc cref="IPostgresRepository.AddRangeAsync"/>
+    /// <inheritdoc cref="IDatabaseRepository.AddRangeAsync"/>
     public async Task AddRangeAsync(IEnumerable<Request> requests)
     {
         await _context.Requests!.AddRangeAsync(requests);
         await _context.SaveChangesAsync();
     }
 
-    /// <inheritdoc cref="IPostgresRepository.AddRange"/>
+    /// <inheritdoc cref="IDatabaseRepository.AddRange"/>
     public void AddRange(IEnumerable<Request> requests)
     {
         _context.Requests!.AddRange(requests);
         _context.SaveChanges();
     }
 
-    /// <inheritdoc cref="IPostgresRepository.Add"/>
+    /// <inheritdoc cref="IDatabaseRepository.Add"/>
     public IEnumerable<Request> Get()
     {
         return _context.Requests!.Include(r => r.Route);

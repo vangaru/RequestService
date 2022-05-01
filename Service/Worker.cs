@@ -39,7 +39,7 @@ public class Worker : BackgroundService
                     _logger.LogInformation("Current delay: {Delay}", delayInMillis);
                     Request request = requestsHttpClient.GetRequestAsync(route).Result;
                     using var localScope = _serviceScopeFactory.CreateScope();
-                    using var repository = localScope.ServiceProvider.GetRequiredService<IPostgresRepository>();
+                    using var repository = localScope.ServiceProvider.GetRequiredService<IDatabaseRepository>();
                     repository.Add(request);
                     _logger.LogInformation(request.ToString());
                 });
