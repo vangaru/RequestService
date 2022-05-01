@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RequestService.Common;
 using RequestService.Common.Models;
 
 namespace RequestService.Data;

@@ -22,10 +22,12 @@ public class RequestsController : ControllerBase
         _requestService = requestService;
     }
 
-    [HttpGet]
-    public IActionResult GetRequest([FromBody] int routesCount)
+    [HttpPost]
+    public IActionResult GetRequest([FromBody] JsonObject routeData)
     {
-        Route route = _routeService.GenerateRandomRoute(routesCount);
+        int origin = routeData[OriginParameter]!.GetValue<int>();
+        int routesCount = routeData[RoutesCountParameter]!.GetValue<int>();
+        Route route = _routeService.GenerateRandomRoute(routesCount, origin);
         Request request = _requestService.GenerateRequest(route);
         return Ok(request);
     }

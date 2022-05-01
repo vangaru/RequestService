@@ -1,4 +1,7 @@
-using RequestService.Api.Configuration;
+using RequestService.Common.Configuration;
+using RequestService.Common.HttpClients;
+using RequestService.Common.Models;
+using RequestService.Repositories;
 using RequestService.Services;
 
 namespace RequestService;
@@ -27,12 +30,18 @@ public class Worker : BackgroundService
                 using var scope = _serviceScopeFactory.CreateScope();
                 var intensityService = scope.ServiceProvider.GetRequiredService<IIntensityService>();
                 var requestsConfiguration = scope.ServiceProvider.GetRequiredService<RequestsConfiguration>();
+                var requestsHttpClient = scope.ServiceProvider.GetRequiredService<IRequestsHttpClient>();
                 int delayInMillis = intensityService.DelayInMillis;
 
                 Parallel.For(0, requestsConfiguration.RoutesCount, route =>
                 {
                     _logger.LogInformation("Worker running at: {Time}", DateTime.Now);
                     _logger.LogInformation("Current delay: {Delay}", delayInMillis);
+                    Request request = requestsHttpClient.GetRequestAsync(route).Result;
+                    using var localScope = _serviceScopeFactory.CreateScope();
+                    using var repository = localScope.ServiceProvider.GetRequiredService<IPostgresRepository>();
+                    repository.Add(request);
+                    _logger.LogInformation(request.ToString());
                 });
 
                 await Task.Delay(delayInMillis, stoppingToken);

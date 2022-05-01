@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RequestService.Common;
 using RequestService.Common.Models;
 using RequestService.Data;
 
@@ -8,7 +7,7 @@ namespace RequestService.Repositories;
 /// <summary>
 /// Implements <see cref="IPostgresRepository"/>. Should be disposed after usage.
 /// </summary>
-public class PostgresRepository : IPostgresRepository, IDisposable
+public class PostgresRepository : IPostgresRepository
 {
     private readonly RequestsContext _context;
 
@@ -33,6 +32,20 @@ public class PostgresRepository : IPostgresRepository, IDisposable
     {
         await _context.Requests!.AddAsync(request);
         await _context.SaveChangesAsync();
+    }
+
+    /// <inheritdoc cref="IPostgresRepository.AddRangeAsync"/>
+    public async Task AddRangeAsync(IEnumerable<Request> requests)
+    {
+        await _context.Requests!.AddRangeAsync(requests);
+        await _context.SaveChangesAsync();
+    }
+
+    /// <inheritdoc cref="IPostgresRepository.AddRange"/>
+    public void AddRange(IEnumerable<Request> requests)
+    {
+        _context.Requests!.AddRange(requests);
+        _context.SaveChanges();
     }
 
     /// <inheritdoc cref="IPostgresRepository.Add"/>

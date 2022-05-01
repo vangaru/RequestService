@@ -21,7 +21,6 @@ public class RequestService : IRequestService
         var request = new Request
         {
             Id = requestId,
-            RouteId = route.Id,
             Route = route,
             SeatsCount = SeatsCount
         };

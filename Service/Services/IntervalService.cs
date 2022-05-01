@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
-using RequestService.Api.Configuration;
 using RequestService.Api.Services;
+using RequestService.Common.Configuration;
 using RequestService.Common.Models;
 
 namespace RequestService.Services;

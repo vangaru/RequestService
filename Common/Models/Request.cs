@@ -1,4 +1,6 @@
-﻿namespace RequestService.Common.Models;
+﻿using System.Globalization;
+
+namespace RequestService.Common.Models;
 
 /// <summary>
 /// Represents transport request.
@@ -16,11 +18,6 @@ public class Request
     public int SeatsCount { get; set; }
 
     /// <summary>
-    /// Id of the route for that request.
-    /// </summary>
-    public string? RouteId { get; set; }
-
-    /// <summary>
     /// <see cref="Route" /> for that request.
     /// </summary>
     public Route? Route { get; set; }
@@ -28,5 +25,13 @@ public class Request
     /// <summary>
     /// Request datetime.
     /// </summary>
-    public DateTime RequestDateTime { get; set; } = DateTime.Now;
+    public string RequestDateTime { get; set; } = DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture);
+
+    public override string ToString()
+    {
+        return $"Id - {Id}; " +
+               $"Seats - {SeatsCount}; " +
+               $"Route - ({Route}); " +
+               $"DateTime - {RequestDateTime}; ";
+    }
 }

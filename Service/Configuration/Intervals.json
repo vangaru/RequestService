@@ -31,33 +31,33 @@
   },
   {
     "StartHour": 6,
-    "MinRequestsCount": 3,
+    "MinRequestsCount": 5,
     "MaxRequestsCount": 30
   },
   {
     "StartHour": 7,
-    "MinRequestsCount": 5,
+    "MinRequestsCount": 10,
     "MaxRequestsCount": 50
   },
   {
     "StartHour": 8,
-    "MinRequestsCount": 5,
-    "MaxRequestsCount": 50
+    "MinRequestsCount": 15,
+    "MaxRequestsCount": 70
   },
   {
     "StartHour": 9,
-    "MinRequestsCount": 5,
-    "MaxRequestsCount": 50
+    "MinRequestsCount": 15,
+    "MaxRequestsCount": 70
   },
   {
     "StartHour": 10,
-    "MinRequestsCount": 5,
-    "MaxRequestsCount": 40
+    "MinRequestsCount": 10,
+    "MaxRequestsCount": 50
   },
   {
     "StartHour": 11,
     "MinRequestsCount": 5,
-    "MaxRequestsCount": 30
+    "MaxRequestsCount": 40
   },
   {
     "StartHour": 12,
@@ -66,7 +66,7 @@
   },
   {
     "StartHour": 13,
-    "MinRequestsCount": 0,
+    "MinRequestsCount": 5,
     "MaxRequestsCount": 20
   },
   {
@@ -76,7 +76,7 @@
   },
   {
     "StartHour": 15,
-    "MinRequestsCount": 0,
+    "MinRequestsCount": 5,
     "MaxRequestsCount": 20
   },
   {
@@ -86,28 +86,28 @@
   },
   {
     "StartHour": 17,
-    "MinRequestsCount": 5,
-    "MaxRequestsCount": 50
+    "MinRequestsCount": 15,
+    "MaxRequestsCount": 70
   },
   {
     "StartHour": 18,
-    "MinRequestsCount": 5,
-    "MaxRequestsCount": 50
+    "MinRequestsCount": 15,
+    "MaxRequestsCount": 70
   },
   {
     "StartHour": 19,
-    "MinRequestsCount": 5,
-    "MaxRequestsCount": 50
+    "MinRequestsCount": 15,
+    "MaxRequestsCount": 70
   },
   {
     "StartHour": 20,
-    "MinRequestsCount": 5,
-    "MaxRequestsCount": 20
+    "MinRequestsCount": 10,
+    "MaxRequestsCount": 50
   },
   {
     "StartHour": 21,
-    "MinRequestsCount": 3,
-    "MaxRequestsCount": 15
+    "MinRequestsCount": 5,
+    "MaxRequestsCount": 30
   },
   {
     "StartHour": 22,

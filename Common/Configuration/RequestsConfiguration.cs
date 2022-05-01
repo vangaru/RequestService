@@ -1,4 +1,4 @@
-﻿namespace RequestService.Api.Configuration;
+﻿namespace RequestService.Common.Configuration;
 
 /// <summary>
 /// Represents requests configuration.
@@ -14,4 +14,9 @@ public class RequestsConfiguration
     /// Amount of accessible routes for request.
     /// </summary>
     public int RoutesCount { get; set; }
+    
+    /// <summary>
+    /// Base Url of RequestService.Api.
+    /// </summary>
+    public string? ApiBaseUrl { get; set; }
 }

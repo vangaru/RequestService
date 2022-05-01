@@ -20,13 +20,10 @@ public class Route
     /// </summary>
     public int Destination { get; set; }
 
-    /// <summary>
-    /// Id of the request corresponding to that route.
-    /// </summary>
-    public string? RequestId { get; set; }
-
-    /// <summary>
-    /// <see cref="Request" /> corresponding to that route.
-    /// </summary>
-    public Request? Request { get; set; }
+    public override string ToString()
+    {
+        return $"Id - {Id}; " +
+               $"Origin - {Origin}; " +
+               $"Destination - {Destination}; ";
+    }
 }
