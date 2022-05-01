@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Globalization;
 using OfficeOpenXml;
 using RequestService.Common.Models;
 
@@ -15,6 +16,7 @@ public static class ExcelWriterService
         using var dataTable = new DataTable();
         PopulateRequestColumns(dataTable);
         PopulateRequestRows(dataTable, requests);
+        Save(dataTable, excelPackage, excelPath);
     }
 
     private static void PopulateRequestColumns(DataTable dataTable)
@@ -43,5 +45,14 @@ public static class ExcelWriterService
     public static void Write(IEnumerable<RequestsPerHourSummary> summaries, string excelPath)
     {
         
+    }
+
+    private static void Save(DataTable dataTable, ExcelPackage excelPackage, string excelPath)
+    {
+        ExcelWorksheet worksheet =
+            excelPackage.Workbook.Worksheets.Add(DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture));
+        worksheet.Cells["A1"].LoadFromDataTable(dataTable, true);
+        var file = new FileInfo(excelPath);
+        excelPackage.SaveAs(file);
     }
 }
