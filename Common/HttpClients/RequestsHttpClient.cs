@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using System.Text.Json.Nodes;
 using RequestService.Common.Configuration;
-using RequestService.Common.Models;
 
 namespace RequestService.Common.HttpClients;
 
@@ -29,7 +28,7 @@ public class RequestsHttpClient : IRequestsHttpClient, IDisposable
         _requestsControllerUri = new Uri(apiBaseUri, RequestsControllerEndpoint);
     }
 
-    public async Task<Request> GetRequestAsync(int origin)
+    public async Task SubmitRequestAsync(int origin)
     {
         var routeDataJsonObject = new JsonObject
         {
@@ -38,10 +37,7 @@ public class RequestsHttpClient : IRequestsHttpClient, IDisposable
         };
 
         var routeDataRequestContent = new StringContent(routeDataJsonObject.ToString(), Encoding.UTF8, JsonMediaType);
-        
-        HttpResponseMessage response = await _httpClient.PostAsync(_requestsControllerUri, routeDataRequestContent);
-        var request = await response.Content.ReadAsAsync<Request>();
-        return request;
+        await _httpClient.PostAsync(_requestsControllerUri, routeDataRequestContent);
     }
 
     public void Dispose()

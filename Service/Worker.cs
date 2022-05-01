@@ -34,6 +34,7 @@ public class Worker : BackgroundService
                 Parallel.For(0, requestsConfiguration.RoutesCount, route =>
                 {
                     _logger.LogInformation("Worker running at: {Time}", DateTime.Now);
+                    requestsHttpClient.SubmitRequestAsync(route).Wait();
                     _logger.LogInformation("Current delay: {Delay}", delayInMillis);
                 });
 

@@ -1,6 +1,4 @@
-﻿using RequestService.Common.Models;
-
-namespace RequestService.Common.HttpClients;
+﻿namespace RequestService.Common.HttpClients;
 
 /// <summary>
 /// Provides methods to access RequestsController API methods.
@@ -8,9 +6,8 @@ namespace RequestService.Common.HttpClients;
 public interface IRequestsHttpClient
 {
     /// <summary>
-    /// Calls Api GetRequest method.
+    /// Calls Api SubmitRequest method.
     /// </summary>
     /// <param name="origin">Origin of the request.</param>
-    /// <returns><see cref="Request"/> result.</returns>
-    public Task<Request> GetRequestAsync(int origin);
+    public Task SubmitRequestAsync(int origin);
 }
