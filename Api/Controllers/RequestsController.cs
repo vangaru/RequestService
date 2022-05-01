@@ -1,6 +1,7 @@
 using System.Text.Json.Nodes;
 using Microsoft.AspNetCore.Mvc;
 using RequestService.Api.Services;
+using RequestService.Common.Models;
 using Route = RequestService.Common.Models.Route;
 
 namespace RequestService.Api.Controllers;
@@ -11,7 +12,7 @@ public class RequestsController : ControllerBase
 {
     private const string OriginParameter = "origin";
     private const string RoutesCountParameter = "routesCount";
-    
+
     private readonly IRouteService _routeService;
     private readonly IRequestService _requestService;
 
@@ -29,5 +30,13 @@ public class RequestsController : ControllerBase
         Route route = _routeService.GenerateRandomRoute(routesCount, origin);
         _requestService.GenerateAndSaveRequest(route);
         return NoContent();
+    }
+
+    [HttpGet]
+    [Route("all")]
+    public IActionResult GetAllRequest()
+    {
+        IEnumerable<Request> requests = _requestService.GetAllRequestsFromDatabase();
+        return Ok(requests);
     }
 }

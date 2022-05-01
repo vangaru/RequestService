@@ -27,6 +27,12 @@ public class RequestService : IRequestService
         _requestsRepository.Add(request);
     }
 
+    /// <inheritdoc cref="IRequestService.GetAllRequestsFromDatabase"/>
+    public IEnumerable<Request> GetAllRequestsFromDatabase()
+    {
+        return _requestsRepository.Get();
+    }
+
     /// <inheritdoc cref="IRequestService.GenerateRequest"/>
     public Request GenerateRequest(Route route)
     {

@@ -20,4 +20,10 @@ public interface IRequestService
     /// </summary>
     /// <param name="route"><see cref="Route"/> of the generated request.</param>
     public void GenerateAndSaveRequest(Route route);
+
+    /// <summary>
+    /// Retrieves all requests from database.
+    /// </summary>
+    /// <returns>All <see cref="Request"/> items from database.</returns>
+    public IEnumerable<Request> GetAllRequestsFromDatabase();
 }
