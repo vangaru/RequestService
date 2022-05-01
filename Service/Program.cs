@@ -1,5 +1,4 @@
 using RequestService;
-using RequestService.Api.Services;
 using RequestService.Common.Configuration;
 using RequestService.Common.HttpClients;
 using RequestService.Services;
@@ -18,7 +17,6 @@ IHostBuilder CreateHostBuilder(string[] args)
             services.AddSingleton(requestsConfiguration);
 
             services.AddTransient<IIntensityService, IntensityService>();
-            services.AddTransient<IIntervalService, IntervalService>();
             services.AddTransient<IRequestsHttpClient, RequestsHttpClient>();
             services.AddHostedService<Worker>();
         });

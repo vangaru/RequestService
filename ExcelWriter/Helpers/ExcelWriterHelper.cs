@@ -44,7 +44,25 @@ public static class ExcelWriterHelper
 
     public static void Write(IEnumerable<RequestsPerHourSummary> summaries, string excelPath)
     {
-        
+        using var excelPackage = new ExcelPackage();
+        using var dataTable = new DataTable();
+        PopulateSummaryColumns(dataTable);
+        PopulateSummaryRows(dataTable, summaries);
+        Save(dataTable, excelPackage, excelPath);
+    }
+
+    private static void PopulateSummaryColumns(DataTable dataTable)
+    {
+        dataTable.Columns.Add("Hour", typeof(int));
+        dataTable.Columns.Add("Requests", typeof(int));
+    }
+
+    private static void PopulateSummaryRows(DataTable dataTable, IEnumerable<RequestsPerHourSummary> summaries)
+    {
+        foreach (RequestsPerHourSummary summary in summaries)
+        {
+            dataTable.Rows.Add(summary.HourOfDay, summary.RequestsCount);
+        }
     }
 
     private static void Save(DataTable dataTable, ExcelPackage excelPackage, string excelPath)

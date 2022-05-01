@@ -20,6 +20,7 @@ builder.Services.AddTransient<IRequestService, RequestService.Api.Services.Reque
 builder.Services.AddDbContext<RequestsContext>(options 
     => options.UseNpgsql(configuration.GetConnectionString(defaultConnectionKey)));
 builder.Services.AddTransient<IRequestsRepository, RequestsRepository>();
+builder.Services.AddTransient<IIntervalService, IntervalService>();
 
 var app = builder.Build();
 

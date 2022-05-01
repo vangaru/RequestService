@@ -34,6 +34,11 @@ public class RequestService : IRequestService
         return _requestsRepository.Get();
     }
 
+    public IEnumerable<Request> GenerateRequests()
+    {
+        throw new NotImplementedException();
+    }
+
     /// <inheritdoc cref="IRequestService.GenerateRequest"/>
     public Request GenerateRequest(Route route)
     {

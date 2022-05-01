@@ -1,25 +1,25 @@
 ﻿using System.Text.Json;
-using RequestService.Api.Services;
-using RequestService.Common.Configuration;
 using RequestService.Common.Models;
 
-namespace RequestService.Services;
+namespace RequestService.Api.Services;
 
 /// <summary>
 /// Implementation of <see cref="IIntervalService"/>.
 /// </summary>
 public class IntervalService : IIntervalService
 {
-    private readonly RequestsConfiguration _requestsConfiguration;
+    private const string IntervalsFileKey = "IntervalsFilePath";
+    
+    private readonly IConfiguration _configuration;
     private readonly List<OneHourInterval> _intervals;
 
     /// <summary>
     /// Creates new instance of <see cref="IntervalService"/>.
     /// </summary>
-    /// <param name="requestsConfiguration">Represents configuration of <see cref="RequestsConfiguration"/>.</param>
-    public IntervalService(RequestsConfiguration requestsConfiguration)
+    /// <param name="configuration">Configuration.</param>
+    public IntervalService(IConfiguration configuration)
     {
-        _requestsConfiguration = requestsConfiguration;
+        _configuration = configuration;
         _intervals = ReadIntervalsFromConfig();
     }
 
@@ -28,7 +28,7 @@ public class IntervalService : IIntervalService
 
     private List<OneHourInterval> ReadIntervalsFromConfig()
     {
-        string? intervalsFilePath = _requestsConfiguration.IntervalsFilePath;
+        string intervalsFilePath = _configuration[IntervalsFileKey];
 
         if (intervalsFilePath == null)
         {

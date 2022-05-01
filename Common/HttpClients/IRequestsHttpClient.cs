@@ -18,4 +18,10 @@ public interface IRequestsHttpClient
     /// </summary>
     /// <returns><see cref="Request"/> collection.</returns>
     public Task<IEnumerable<Request>> GetAllRequestsAsync();
+
+    /// <summary>
+    /// Calls Api GetSummary method.
+    /// </summary>
+    /// <returns><see cref="RequestsPerHourSummary"/> collection.</returns>
+    public Task<IEnumerable<RequestsPerHourSummary>> GetSummaryAsync();
 }

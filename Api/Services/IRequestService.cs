@@ -28,6 +28,12 @@ public interface IRequestService
     public IEnumerable<Request> GetAllRequestsFromDatabase();
 
     /// <summary>
+    /// Generates daily requests.
+    /// </summary>
+    /// <returns>Generated <see cref="Request"/> items.</returns>
+    public IEnumerable<Request> GenerateRequests();
+
+    /// <summary>
     /// Reads requests from database and creates summary.
     /// </summary>
     /// <returns><see cref="RequestsPerHourSummary"/> collection.</returns>

@@ -80,6 +80,7 @@ public static class ExcelWriterConsole
                 break;
             case WriteSummaryArg:
                 Console.WriteLine($"Writing db records summary to {excelPath}...");
+                excelWriterService.WriteRequestsSummary(excelPath);
                 break;
             case WriteGeneratedArg:
                 Console.WriteLine($"Generating daily records and writing to {excelPath}...");

@@ -12,6 +12,7 @@ public class RequestsHttpClient : IRequestsHttpClient, IDisposable
 {
     private const string RequestsControllerEndpoint = "requests/";
     private const string GetAllRequestsMethodEndpoint = "all/";
+    private const string GetSummaryMethodEndpoint = "summary/";
     private const string JsonMediaType = "application/json";
     private const string RouteOriginKey = "origin";
     private const string RoutesCountKey = "routesCount";
@@ -50,9 +51,18 @@ public class RequestsHttpClient : IRequestsHttpClient, IDisposable
     public async Task<IEnumerable<Request>> GetAllRequestsAsync()
     {
         var getAllRequestsUri = new Uri(_requestsControllerUri, GetAllRequestsMethodEndpoint);
-        var getAllRequestsContent = await _httpClient.GetAsync(getAllRequestsUri);
+        HttpResponseMessage getAllRequestsContent = await _httpClient.GetAsync(getAllRequestsUri);
         var requests = await getAllRequestsContent.Content.ReadAsAsync<IEnumerable<Request>>();
         return requests;
+    }
+
+    /// <inheritdoc cref="IRequestsHttpClient.GetSummaryAsync"/>
+    public async Task<IEnumerable<RequestsPerHourSummary>> GetSummaryAsync()
+    {
+        var getSummaryUri = new Uri(_requestsControllerUri, GetSummaryMethodEndpoint);
+        HttpResponseMessage getSummaryContent = await _httpClient.GetAsync(getSummaryUri);
+        var summary = await getSummaryContent.Content.ReadAsAsync<IEnumerable<RequestsPerHourSummary>>();
+        return summary;
     }
 
     public void Dispose()

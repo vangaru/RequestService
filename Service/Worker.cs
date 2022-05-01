@@ -29,7 +29,7 @@ public class Worker : BackgroundService
                 var intensityService = scope.ServiceProvider.GetRequiredService<IIntensityService>();
                 var requestsConfiguration = scope.ServiceProvider.GetRequiredService<RequestsConfiguration>();
                 var requestsHttpClient = scope.ServiceProvider.GetRequiredService<IRequestsHttpClient>();
-                int delayInMillis = intensityService.DelayInMillis;
+                int delayInMillis = intensityService.GetDelayInMillis();
 
                 Parallel.For(0, requestsConfiguration.RoutesCount, route =>
                 {

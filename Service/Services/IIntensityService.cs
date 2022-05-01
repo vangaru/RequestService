@@ -1,4 +1,6 @@
-﻿namespace RequestService.Services;
+﻿using RequestService.Common.Models;
+
+namespace RequestService.Services;
 
 /// <summary>
 /// Calculates delay in milliseconds for the next execution step of worker service.
@@ -11,5 +13,5 @@ public interface IIntensityService
     /// <returns>
     /// Delay of the next execution step in millis.
     /// </returns>
-    public int DelayInMillis { get; }
+    public int GetDelayInMillis(OneHourInterval currentInterval);
 }
