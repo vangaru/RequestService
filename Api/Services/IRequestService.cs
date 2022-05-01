@@ -14,4 +14,10 @@ public interface IRequestService
     /// <param name="route"><see cref="Route"/> of the generated request.</param>
     /// <returns><see cref="Request"/> instance.</returns>
     public Request GenerateRequest(Route route);
+
+    /// <summary>
+    /// Generates request and saves it to database.
+    /// </summary>
+    /// <param name="route"><see cref="Route"/> of the generated request.</param>
+    public void GenerateAndSaveRequest(Route route);
 }

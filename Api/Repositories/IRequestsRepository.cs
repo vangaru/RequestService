@@ -5,7 +5,7 @@ namespace RequestService.Api.Repositories;
 /// <summary>
 /// Abstraction for accessing postgres database containing requests.
 /// </summary>
-public interface IDatabaseRepository : IDisposable
+public interface IRequestsRepository : IDisposable
 {
     /// <summary>
     /// Adds <see cref="Request"/> to postgres database.

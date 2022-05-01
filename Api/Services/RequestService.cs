@@ -1,4 +1,5 @@
-﻿using RequestService.Common.Models;
+﻿using RequestService.Api.Repositories;
+using RequestService.Common.Models;
 using Route = RequestService.Common.Models.Route;
 
 namespace RequestService.Api.Services;
@@ -12,7 +13,20 @@ public class RequestService : IRequestService
     private const int MaxSeatsCount = 4;
     
     private readonly Random _random = new();
+    private readonly IRequestsRepository _requestsRepository;
+
+    public RequestService(IRequestsRepository requestsRepository)
+    {
+        _requestsRepository = requestsRepository;
+    }
     
+    /// <inheritdoc cref="IRequestService.GenerateAndSaveRequest"/>
+    public void GenerateAndSaveRequest(Route route)
+    {
+        Request request = GenerateRequest(route);
+        _requestsRepository.Add(request);
+    }
+
     /// <inheritdoc cref="IRequestService.GenerateRequest"/>
     public Request GenerateRequest(Route route)
     {
@@ -27,6 +41,6 @@ public class RequestService : IRequestService
 
         return request;
     }
-
+    
     private int SeatsCount => _random.Next(MinSeatsCount, MaxSeatsCount);
 }

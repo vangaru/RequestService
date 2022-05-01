@@ -1,7 +1,6 @@
 using System.Text.Json.Nodes;
 using Microsoft.AspNetCore.Mvc;
 using RequestService.Api.Services;
-using RequestService.Common.Models;
 using Route = RequestService.Common.Models.Route;
 
 namespace RequestService.Api.Controllers;
@@ -20,5 +19,15 @@ public class RequestsController : ControllerBase
     {
         _routeService = routeService;
         _requestService = requestService;
+    }
+
+    [HttpPost]
+    public IActionResult SubmitRequest([FromBody] JsonObject routeData)
+    {
+        int origin = routeData[OriginParameter]!.GetValue<int>();
+        int routesCount = routeData[RoutesCountParameter]!.GetValue<int>();
+        Route route = _routeService.GenerateRandomRoute(routesCount, origin);
+        _requestService.GenerateAndSaveRequest(route);
+        return NoContent();
     }
 }

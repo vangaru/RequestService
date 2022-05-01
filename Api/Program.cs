@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RequestService.Api.Data;
+using RequestService.Api.Repositories;
 using RequestService.Api.Services;
 
 const string defaultConnectionKey = "DefaultConnection";
@@ -18,6 +19,7 @@ builder.Services.AddTransient<IRouteService, RouteService>();
 builder.Services.AddTransient<IRequestService, RequestService.Api.Services.RequestService>();
 builder.Services.AddDbContext<RequestsContext>(options 
     => options.UseNpgsql(configuration.GetConnectionString(defaultConnectionKey)));
+builder.Services.AddTransient<IRequestsRepository, RequestsRepository>();
 
 var app = builder.Build();
 
