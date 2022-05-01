@@ -1,4 +1,5 @@
-﻿using RequestService.Common.Models;
+﻿using RequestService.Common.HttpClients;
+using RequestService.Common.Models;
 
 namespace RequestService.Services;
 
@@ -10,9 +11,16 @@ public class IntensityService : IIntensityService
     private const int MillisInHour = 3_600_000;
     private const int DefaultInterval = 10_000;
 
-    public int GetDelayInMillis(OneHourInterval currentInterval)
+    private readonly IIntervalsHttpClient _httpClient;
+
+    public IntensityService(IIntervalsHttpClient httpClient)
     {
-        OneHourInterval interval = currentInterval;
+        _httpClient = httpClient;
+    }
+
+    public int GetDelayInMillis()
+    {
+        OneHourInterval interval = _httpClient.GetCurrentIntervalAsync().Result;
         var random = new Random();
         int requestsCount = random.Next(interval.MinRequestsCount, interval.MaxRequestsCount);
         return GetDelay(requestsCount);

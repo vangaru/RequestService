@@ -18,6 +18,7 @@ IHostBuilder CreateHostBuilder(string[] args)
 
             services.AddTransient<IIntensityService, IntensityService>();
             services.AddTransient<IRequestsHttpClient, RequestsHttpClient>();
+            services.AddTransient<IIntervalsHttpClient, IntervalsHttpClient>();
             services.AddHostedService<Worker>();
         });
 }

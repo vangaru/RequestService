@@ -13,5 +13,5 @@ public interface IIntensityService
     /// <returns>
     /// Delay of the next execution step in millis.
     /// </returns>
-    public int GetDelayInMillis(OneHourInterval currentInterval);
+    public int GetDelayInMillis();
 }
