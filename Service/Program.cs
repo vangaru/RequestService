@@ -3,6 +3,7 @@ using RequestService;
 using RequestService.Api.Configuration;
 using RequestService.Api.Services;
 using RequestService.Data;
+using RequestService.Repositories;
 using RequestService.Services;
 
 const string defaultConnectionProp = "DefaultConnection";
@@ -21,6 +22,7 @@ IHost host = Host.CreateDefaultBuilder(args)
         
         services.AddTransient<IIntensityService, IntensityService>();
         services.AddTransient<IIntervalService, IntervalService>();
+        services.AddTransient<IPostgresRepository, PostgresRepository>();
         services.AddHostedService<Worker>();
     })
     .Build();
