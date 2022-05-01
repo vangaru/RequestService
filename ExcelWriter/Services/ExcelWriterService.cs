@@ -1,4 +1,6 @@
 ﻿using RequestService.Common.HttpClients;
+using RequestService.Common.Models;
+using RequestService.ExcelWriter.Helpers;
 
 namespace RequestService.ExcelWriter.Services;
 
@@ -13,7 +15,8 @@ public class ExcelWriterService : IExcelWriterService
     
     public void WriteRequestsFromDb(string excelPath)
     {
-        throw new NotImplementedException();
+        IEnumerable<Request> requests = _httpClient.GetAllRequestsAsync().Result;
+        ExcelWriterHelper.Write(requests, excelPath);
     }
 
     public void WriteRequestsSummary(string excelPath)

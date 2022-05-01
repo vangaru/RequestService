@@ -8,7 +8,7 @@ namespace RequestService.ExcelWriter.Helpers;
 /// <summary>
 /// Writes specified data to excel.
 /// </summary>
-public static class ExcelWriterService
+public static class ExcelWriterHelper
 {
     public static void Write(IEnumerable<Request> requests, string excelPath)
     {
