@@ -1,7 +1,5 @@
 using RequestService.Common.Configuration;
 using RequestService.Common.HttpClients;
-using RequestService.Common.Models;
-using RequestService.Repositories;
 using RequestService.Services;
 
 namespace RequestService;
@@ -37,11 +35,6 @@ public class Worker : BackgroundService
                 {
                     _logger.LogInformation("Worker running at: {Time}", DateTime.Now);
                     _logger.LogInformation("Current delay: {Delay}", delayInMillis);
-                    Request request = requestsHttpClient.GetRequestAsync(route).Result;
-                    using var localScope = _serviceScopeFactory.CreateScope();
-                    using var repository = localScope.ServiceProvider.GetRequiredService<IDatabaseRepository>();
-                    repository.Add(request);
-                    _logger.LogInformation(request.ToString());
                 });
 
                 await Task.Delay(delayInMillis, stoppingToken);

@@ -1,6 +1,6 @@
 ﻿using RequestService.Common.Models;
 
-namespace RequestService.Repositories;
+namespace RequestService.Api.Repositories;
 
 /// <summary>
 /// Abstraction for accessing postgres database containing requests.

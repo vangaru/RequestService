@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RequestService.Common.Models;
+using Route = RequestService.Common.Models.Route;
 
-namespace RequestService.Data;
+namespace RequestService.Api.Data;
 
 public sealed class RequestsContext : DbContext
 {
@@ -10,6 +11,5 @@ public sealed class RequestsContext : DbContext
 
     public RequestsContext(DbContextOptions<RequestsContext> options): base(options)
     {
-        Database.EnsureCreated();
     }
 }

@@ -2,9 +2,9 @@
 
 #nullable disable
 
-namespace RequestService.Migrations
+namespace RequestService.Api.Migrations
 {
-    public partial class initialmigrationsqlite : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,9 +12,9 @@ namespace RequestService.Migrations
                 name: "Routes",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
-                    Origin = table.Column<int>(type: "INTEGER", nullable: false),
-                    Destination = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<string>(type: "text", nullable: false),
+                    Origin = table.Column<int>(type: "integer", nullable: false),
+                    Destination = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,10 +25,10 @@ namespace RequestService.Migrations
                 name: "Requests",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
-                    SeatsCount = table.Column<int>(type: "INTEGER", nullable: false),
-                    RouteId = table.Column<string>(type: "TEXT", nullable: true),
-                    RequestDateTime = table.Column<string>(type: "TEXT", nullable: false)
+                    Id = table.Column<string>(type: "text", nullable: false),
+                    SeatsCount = table.Column<int>(type: "integer", nullable: false),
+                    RouteId = table.Column<string>(type: "text", nullable: true),
+                    RequestDateTime = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {

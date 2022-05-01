@@ -1,6 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using RequestService.Api.Data;
 using RequestService.Api.Services;
 
+const string defaultConnectionKey = "DefaultConnection";
+
 var builder = WebApplication.CreateBuilder(args);
+ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container.
 
@@ -11,6 +16,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddOptions();
 builder.Services.AddTransient<IRouteService, RouteService>();
 builder.Services.AddTransient<IRequestService, RequestService.Api.Services.RequestService>();
+builder.Services.AddDbContext<RequestsContext>(options 
+    => options.UseNpgsql(configuration.GetConnectionString(defaultConnectionKey)));
 
 var app = builder.Build();
 

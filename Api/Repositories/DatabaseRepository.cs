@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RequestService.Api.Data;
 using RequestService.Common.Models;
-using RequestService.Data;
 
-namespace RequestService.Repositories;
+namespace RequestService.Api.Repositories;
 
 /// <summary>
 /// Implements <see cref="IDatabaseRepository"/>. Should be disposed after usage.
