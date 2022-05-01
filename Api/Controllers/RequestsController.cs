@@ -39,4 +39,12 @@ public class RequestsController : ControllerBase
         IEnumerable<Request> requests = _requestService.GetAllRequestsFromDatabase();
         return Ok(requests);
     }
+
+    [HttpGet]
+    [Route("summary")]
+    public IActionResult GetSummary()
+    {
+        IEnumerable<RequestsPerHourSummary> summary = _requestService.GetRequestsSummary();
+        return Ok(summary);
+    }
 }

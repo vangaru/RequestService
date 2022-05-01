@@ -11,6 +11,7 @@ public class RequestService : IRequestService
 {
     private const int MinSeatsCount = 1;
     private const int MaxSeatsCount = 4;
+    private const int HoursInDay = 24;
     
     private readonly Random _random = new();
     private readonly IRequestsRepository _requestsRepository;
@@ -47,6 +48,34 @@ public class RequestService : IRequestService
 
         return request;
     }
-    
+
+    /// <inheritdoc cref="IRequestService.GetRequestsSummary"/>
+    public IEnumerable<RequestsPerHourSummary> GetRequestsSummary()
+    {
+        List<Request> allRequests = GetAllRequestsFromDatabase().ToList();
+        
+        var summaries = new List<RequestsPerHourSummary>();
+        
+        for (int hour = 1; hour <= HoursInDay; hour++)
+        {
+            RequestsPerHourSummary summary = GetSummaryForHour(allRequests, hour);
+            summaries.Add(summary);
+        }
+
+        return summaries;
+    }
+
+    private RequestsPerHourSummary GetSummaryForHour(List<Request> requests, int hour)
+    {
+        int requestsCountForHour = requests.Count(request => DateTime.Parse(request.RequestDateTime).Hour == hour);
+        var summary = new RequestsPerHourSummary
+        {
+            HourOfDay = hour,
+            RequestsCount = requestsCountForHour
+        };
+        
+        return summary;
+    }
+
     private int SeatsCount => _random.Next(MinSeatsCount, MaxSeatsCount);
 }

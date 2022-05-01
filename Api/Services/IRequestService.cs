@@ -26,4 +26,10 @@ public interface IRequestService
     /// </summary>
     /// <returns>All <see cref="Request"/> items from database.</returns>
     public IEnumerable<Request> GetAllRequestsFromDatabase();
+
+    /// <summary>
+    /// Reads requests from database and creates summary.
+    /// </summary>
+    /// <returns><see cref="RequestsPerHourSummary"/> collection.</returns>
+    public IEnumerable<RequestsPerHourSummary> GetRequestsSummary();
 }
