@@ -1,4 +1,4 @@
-﻿using Route = RequestService.Common.Route;
+﻿using Route = RequestService.Common.Models.Route;
 
 namespace RequestService.Api.Services;
 

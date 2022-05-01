@@ -1,4 +1,4 @@
-﻿namespace RequestService.Common;
+﻿namespace RequestService.Common.Models;
 
 /// <summary>
 /// Represents amount of requests per hour of day.

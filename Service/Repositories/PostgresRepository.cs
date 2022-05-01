@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RequestService.Common;
+using RequestService.Common.Models;
 using RequestService.Data;
 
 namespace RequestService.Repositories;

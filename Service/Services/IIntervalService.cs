@@ -1,4 +1,4 @@
-﻿using RequestService.Common;
+﻿using RequestService.Common.Models;
 
 namespace RequestService.Api.Services;
 

@@ -1,6 +1,8 @@
 using System.Text.Json.Nodes;
 using Microsoft.AspNetCore.Mvc;
 using RequestService.Api.Services;
+using RequestService.Common.Models;
+using Route = RequestService.Common.Models.Route;
 
 namespace RequestService.Api.Controllers;
 
@@ -25,8 +27,8 @@ public class RequestsController : ControllerBase
     {
         int origin = routeData[OriginParameter]!.GetValue<int>();
         int routesCount = routeData[RoutesCountParameter]!.GetValue<int>();
-        Common.Route route = _routeService.GenerateRandomRoute(origin, routesCount);
-        Common.Request request = _requestService.GenerateRequest(route);
+        Route route = _routeService.GenerateRandomRoute(origin, routesCount);
+        Request request = _requestService.GenerateRequest(route);
         return Ok(request);
     }
 }

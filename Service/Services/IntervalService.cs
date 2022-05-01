@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using RequestService.Api.Configuration;
 using RequestService.Api.Services;
-using RequestService.Common;
+using RequestService.Common.Models;
 
 namespace RequestService.Services;
 

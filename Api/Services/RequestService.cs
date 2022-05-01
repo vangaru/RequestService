@@ -1,4 +1,5 @@
-﻿using RequestService.Common;
+﻿using RequestService.Common.Models;
+using Route = RequestService.Common.Models.Route;
 
 namespace RequestService.Api.Services;
 
@@ -13,7 +14,7 @@ public class RequestService : IRequestService
     private readonly Random _random = new();
     
     /// <inheritdoc cref="IRequestService.GenerateRequest"/>
-    public Request GenerateRequest(Common.Route route)
+    public Request GenerateRequest(Route route)
     {
         string requestId = Guid.NewGuid().ToString();
         

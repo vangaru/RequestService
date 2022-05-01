@@ -1,4 +1,4 @@
-﻿namespace RequestService.Common;
+﻿namespace RequestService.Common.Models;
 
 /// <summary>
 /// One hour interval of time.

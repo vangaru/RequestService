@@ -1,5 +1,5 @@
 ﻿using RequestService.Api.Services;
-using RequestService.Common;
+using RequestService.Common.Models;
 
 namespace RequestService.Services;
 
