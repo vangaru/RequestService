@@ -34,6 +34,12 @@ public interface IRequestService
     public IEnumerable<Request> GenerateRequests(int routesCount);
 
     /// <summary>
+    /// Generates daily summary.
+    /// </summary>
+    /// <returns>Generates <see cref="RequestsPerHourSummary"/> items.</returns>
+    public IEnumerable<RequestsPerHourSummary> GenerateSummary(int routesCount);
+
+    /// <summary>
     /// Reads requests from database and creates summary.
     /// </summary>
     /// <returns><see cref="RequestsPerHourSummary"/> collection.</returns>

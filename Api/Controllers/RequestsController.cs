@@ -22,16 +22,6 @@ public class RequestsController : ControllerBase
         _requestService = requestService;
     }
 
-    [HttpPost]
-    public IActionResult SubmitRequest([FromBody] JsonObject routeData)
-    {
-        int origin = routeData[OriginParameter]!.GetValue<int>();
-        int routesCount = routeData[RoutesCountParameter]!.GetValue<int>();
-        Route route = _routeService.GenerateRandomRoute(routesCount, origin);
-        _requestService.GenerateAndSaveRequest(route);
-        return NoContent();
-    }
-
     [HttpGet]
     [Route("all")]
     public IActionResult GetAllRequest()
@@ -54,5 +44,23 @@ public class RequestsController : ControllerBase
     {
         IEnumerable<Request> requests = _requestService.GenerateRequests(routesCount);
         return Ok(requests);
+    }
+
+    [HttpPost]
+    [Route("generated/summary")]
+    public IActionResult GetGeneratedSummary([FromBody] int routesCount)
+    {
+        IEnumerable<RequestsPerHourSummary> summary = _requestService.GenerateSummary(routesCount);
+        return Ok(summary);
+    }
+    
+    [HttpPost]
+    public IActionResult SubmitRequest([FromBody] JsonObject routeData)
+    {
+        int origin = routeData[OriginParameter]!.GetValue<int>();
+        int routesCount = routeData[RoutesCountParameter]!.GetValue<int>();
+        Route route = _routeService.GenerateRandomRoute(routesCount, origin);
+        _requestService.GenerateAndSaveRequest(route);
+        return NoContent();
     }
 }

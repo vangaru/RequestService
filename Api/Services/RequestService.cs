@@ -101,17 +101,28 @@ public class RequestService : IRequestService
 
         return request;
     }
+    
+    /// <inheritdoc cref="IRequestService.GenerateSummary"/>
+    public IEnumerable<RequestsPerHourSummary> GenerateSummary(int routesCount)
+    {
+        List<Request> requests = GenerateRequests(routesCount).ToList();
+        return GetRequestsSummary(requests);
+    }
 
     /// <inheritdoc cref="IRequestService.GetRequestsSummary"/>
     public IEnumerable<RequestsPerHourSummary> GetRequestsSummary()
     {
         List<Request> allRequests = GetAllRequestsFromDatabase().ToList();
-        
+        return GetRequestsSummary(allRequests);
+    }
+
+    private IEnumerable<RequestsPerHourSummary> GetRequestsSummary(List<Request> requests)
+    {
         var summaries = new List<RequestsPerHourSummary>();
         
         for (int hour = 1; hour <= HoursInDay; hour++)
         {
-            RequestsPerHourSummary summary = GetSummaryForHour(allRequests, hour);
+            RequestsPerHourSummary summary = GetSummaryForHour(requests, hour);
             summaries.Add(summary);
         }
 
