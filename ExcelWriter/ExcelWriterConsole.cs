@@ -84,6 +84,7 @@ public static class ExcelWriterConsole
                 break;
             case WriteGeneratedArg:
                 Console.WriteLine($"Generating daily records and writing to {excelPath}...");
+                excelWriterService.WriteGeneratedSummary(excelPath);
                 break;
             default:
                 Console.WriteLine($"Unrecognized parameter: {recordingType}. " +

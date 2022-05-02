@@ -24,4 +24,16 @@ public interface IRequestsHttpClient
     /// </summary>
     /// <returns><see cref="RequestsPerHourSummary"/> collection.</returns>
     public Task<IEnumerable<RequestsPerHourSummary>> GetSummaryAsync();
+
+    /// <summary>
+    /// Calls Api GetGeneratedRequests method.
+    /// </summary>
+    /// <returns><see cref="Request"/> collection.</returns>
+    public Task<IEnumerable<Request>> GetGeneratedRequestsAsync();
+
+    /// <summary>
+    /// Calls Api GetGeneratedSummary method.
+    /// </summary>
+    /// <returns><see cref="RequestsPerHourSummary"/> collection.</returns>
+    public Task<IEnumerable<RequestsPerHourSummary>> GetGeneratedSummaryAsync();
 }

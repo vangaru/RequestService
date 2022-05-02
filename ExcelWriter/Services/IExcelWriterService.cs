@@ -21,5 +21,5 @@ public interface IExcelWriterService
     /// Writes generated requests to the database.
     /// </summary>
     /// <param name="excelPath">Path to the excel file to write records to.</param>
-    public void WriteGeneratedRequests(string excelPath);
+    public void WriteGeneratedSummary(string excelPath);
 }

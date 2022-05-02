@@ -30,9 +30,10 @@ public class ExcelWriterService : IExcelWriterService
         ExcelWriterHelper.Write(summary, excelPath);
     }
 
-    /// <inheritdoc cref="IExcelWriterService.WriteGeneratedRequests"/>
-    public void WriteGeneratedRequests(string excelPath)
+    /// <inheritdoc cref="IExcelWriterService.WriteGeneratedSummary"/>
+    public void WriteGeneratedSummary(string excelPath)
     {
-        throw new NotImplementedException();
+        IEnumerable<RequestsPerHourSummary> summary = _httpClient.GetGeneratedSummaryAsync().Result;
+        ExcelWriterHelper.Write(summary, excelPath);
     }
 }

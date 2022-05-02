@@ -11,6 +11,8 @@ namespace RequestService.Common.HttpClients;
 public class RequestsHttpClient : IRequestsHttpClient, IDisposable
 {
     private const string RequestsControllerEndpoint = "requests/";
+    private const string GeneratedSummaryEndpoint = "generated/summary";
+    private const string GeneratedRequestsEndpoint = "generated/requests";
     private const string GetAllRequestsMethodEndpoint = "all/";
     private const string GetSummaryMethodEndpoint = "summary/";
     private const string JsonMediaType = "application/json";
@@ -62,6 +64,26 @@ public class RequestsHttpClient : IRequestsHttpClient, IDisposable
         var getSummaryUri = new Uri(_requestsControllerUri, GetSummaryMethodEndpoint);
         HttpResponseMessage getSummaryContent = await _httpClient.GetAsync(getSummaryUri);
         var summary = await getSummaryContent.Content.ReadAsAsync<IEnumerable<RequestsPerHourSummary>>();
+        return summary;
+    }
+
+    /// <inheritdoc cref="IRequestsHttpClient.GetGeneratedRequestsAsync"/>
+    public async Task<IEnumerable<Request>> GetGeneratedRequestsAsync()
+    {
+        var generatedRequestsUri = new Uri(_requestsControllerUri, GeneratedRequestsEndpoint);
+        var requestContent = new StringContent(_requestsConfiguration.RoutesCount.ToString(), Encoding.UTF8, JsonMediaType);
+        HttpResponseMessage requestsContent = await _httpClient.PostAsync(generatedRequestsUri, requestContent);
+        var requests = await requestsContent.Content.ReadAsAsync<IEnumerable<Request>>();
+        return requests;
+    }
+
+    /// <inheritdoc cref="IRequestsHttpClient.GetGeneratedSummaryAsync"/>
+    public async Task<IEnumerable<RequestsPerHourSummary>> GetGeneratedSummaryAsync()
+    {
+        var generatedSummaryUri = new Uri(_requestsControllerUri, GeneratedSummaryEndpoint);
+        var requestContent = new StringContent(_requestsConfiguration.RoutesCount.ToString(), Encoding.UTF8, JsonMediaType);
+        HttpResponseMessage summaryContent = await _httpClient.PostAsync(generatedSummaryUri, requestContent);
+        var summary = await summaryContent.Content.ReadAsAsync<IEnumerable<RequestsPerHourSummary>>();
         return summary;
     }
 
